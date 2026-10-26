@@ -1,0 +1,50 @@
+<section class="container py-4">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h2 class="text-primary">Supplier Price Comparison</h2>
+            <h4 class="text-muted">Which supplier is cheapest for this whole order, once volume prices, freight and other costs are counted?</h4>
+            <p class="mt-3">The lowest unit price often isn't the cheapest order. This module prices every line of a request
+                for quotation with each vendor's own quantity tiers, adds that vendor's freight and other extra costs,
+                and tells the buyer on the RFQ when another vendor is cheaper, with the exact saving.</p>
+        </div>
+    </div>
+</section>
+
+<section class="container py-4">
+    <h3 class="text-primary">On the RFQ</h3>
+    <p>A banner names the cheaper vendor and the saving, extra costs included. It only advises: the buyer decides.</p>
+    <img class="img-fluid border" src="rfq-banner.png" alt="RFQ banner pointing to a cheaper vendor"/>
+</section>
+
+<section class="container py-4">
+    <h3 class="text-primary">Compare Suppliers</h3>
+    <p>Every vendor ranked by total: products at its own tiered prices, its extra costs, and the total. Vendors with no
+        price for some product are listed last, saying which product. <b>Choose</b> moves the RFQ to that vendor and
+        reprices every line, including prices typed by hand.</p>
+    <img class="img-fluid border" src="compare-wizard.png" alt="Comparison of goods, extra costs and total per vendor"/>
+</section>
+
+<section class="container py-4">
+    <h3 class="text-primary">Extra costs per vendor</h3>
+    <p>On the vendor's Sales &amp; Purchase tab: a fixed amount per order (freight, unloading) or a percentage of the
+        goods (cargo insurance), optionally waived above an order amount (free freight).</p>
+    <img class="img-fluid border" src="vendor-extra-costs.png" alt="Extra costs on a vendor"/>
+</section>
+
+<section class="container py-4">
+    <h3 class="text-primary">How it works</h3>
+    <ul>
+        <li><b>No new price model.</b> Tiers are Odoo's own vendor price lists (several rows per product with a minimum
+            quantity), and each line is priced with the same rule Odoo uses on the order, so the comparison never
+            drifts from the real price. Validity dates, the vendor's currency and units of measure are converted to
+            the order's.</li>
+        <li><b>Extra costs belong to the vendor, not the product</b>, because freight is charged per shipment.</li>
+        <li><b>Untaxed comparison</b>, as vendor prices are.</li>
+        <li><b>Spanish translation included</b> (Latin American wording of Odoo's purchase app).</li>
+        <li><b>Demo data</b>: install with demo data to get three vendors, tiered prices, extra costs and an RFQ that
+            shows the banner right away.</li>
+        <li>18 automated tests, run on Odoo 19 Community with and without demo data.</li>
+    </ul>
+    <p class="text-muted">Depends only on Purchase. Tested on Odoo 19 Community. Screenshots use fictitious
+        companies and prices.</p>
+</section>

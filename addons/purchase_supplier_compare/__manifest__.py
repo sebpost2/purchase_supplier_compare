@@ -1,6 +1,6 @@
 {
-    "name": "Purchase Supplier Price Comparison",
-    "version": "19.0.1.0.0",
+    "name": "Supplier Price Comparison",
+    "version": "19.0.1.1.0",
     "summary": "Compare suppliers on an RFQ by total cost: volume-tiered prices plus each vendor's freight and other extra costs.",
     "description": """
 Prices every line of an RFQ with each vendor's own price list (Odoo's vendor
@@ -20,6 +20,7 @@ prices in one click.
         "wizard/purchase_supplier_compare_views.xml",
     ],
     "demo": ["data/demo.xml"],
+    "images": ["static/description/banner.png"],
     "installable": True,
     "application": False,
 }
