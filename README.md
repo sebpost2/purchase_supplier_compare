@@ -2,7 +2,7 @@
 
 [![tests](https://github.com/sebpost2/purchase_supplier_compare/actions/workflows/tests.yml/badge.svg)](https://github.com/sebpost2/purchase_supplier_compare/actions/workflows/tests.yml)
 
-**17 passing tests.** An Odoo 19 addon that answers the buyer's real question
+**18 passing tests.** An Odoo 19 addon that answers the buyer's real question
 on a request for quotation: which supplier is cheapest for *this* order, once
 volume prices, freight and other extra costs are counted. The lowest unit
 price often isn't the cheapest order.
@@ -30,12 +30,15 @@ price often isn't the cheapest order.
   price for some product are listed last, saying which product. **Choose**
   moves the RFQ to that vendor and reprices every line with its prices,
   including lines whose price had been typed by hand.
+- **In Spanish too**: `i18n/es.po` uses the Latin American wording of
+  Odoo's own purchase app ("solicitud de cotización"), so a Peruvian
+  (`es_PE`) user sees the whole module in Spanish.
 
 ![RFQ banner: another vendor is cheaper, with the saving](docs/screenshots/rfq-banner.png)
 ![Compare Suppliers: goods, extra costs and total per vendor](docs/screenshots/compare-wizard.png)
 ![Extra costs on the vendor](docs/screenshots/vendor-extra-costs.png)
 
-*Screenshots use fictitious companies and prices.* In them, Distribuidora
+*Screenshots in Spanish (Peru), with fictitious companies and prices.* In them, Distribuidora
 Andina has the cheaper goods (S/ 11,105 vs S/ 11,360), but its freight and
 insurance make Aceros Chachani S/ 586.05 cheaper for the whole order.
 

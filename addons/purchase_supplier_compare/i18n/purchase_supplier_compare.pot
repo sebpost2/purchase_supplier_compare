@@ -1,0 +1,292 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* purchase_supplier_compare
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0-20260817\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-26 20:40+0000\n"
+"PO-Revision-Date: 2026-10-26 20:40+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: purchase_supplier_compare
+#: model:ir.model.fields.selection,name:purchase_supplier_compare.selection__purchase_extra_cost__cost_type__percent
+msgid "% of the goods"
+msgstr ""
+
+#. module: purchase_supplier_compare
+#. odoo-python
+#: code:addons/purchase_supplier_compare/models/purchase_order.py:0
+msgid "%(vendor)s has no price for %(product)s."
+msgstr ""
+
+#. module: purchase_supplier_compare
+#: model_terms:ir.ui.view,arch_db:purchase_supplier_compare.purchase_order_form_supplier_compare
+msgid ""
+"<span invisible=\"not cheapest_savings\">less, extra costs included.</span>\n"
+"                    <span invisible=\"cheapest_savings\">is the cheapest vendor for every line, extra costs included.</span>"
+msgstr ""
+
+#. module: purchase_supplier_compare
+#: model_terms:ir.ui.view,arch_db:purchase_supplier_compare.purchase_order_form_supplier_compare
+msgid "<span invisible=\"not cheapest_savings\">quotes every line for</span>"
+msgstr ""
+
+#. module: purchase_supplier_compare
+#: model:ir.model.fields,field_description:purchase_supplier_compare.field_purchase_extra_cost__amount
+msgid "Amount"
+msgstr ""
+
+#. module: purchase_supplier_compare
+#: model:ir.model.constraint,message:purchase_supplier_compare.constraint_purchase_extra_cost_amount_positive
+msgid "An extra cost cannot be negative."
+msgstr ""
+
+#. module: purchase_supplier_compare
+#: model:ir.model.fields,help:purchase_supplier_compare.field_purchase_order__cheapest_partner_id
+msgid ""
+"Another vendor that quotes every line of this RFQ for less, extra costs "
+"included."
+msgstr ""
+
+#. module: purchase_supplier_compare
+#: model:ir.model.fields,field_description:purchase_supplier_compare.field_purchase_order__cheapest_partner_id
+msgid "Cheapest Partner"
+msgstr ""
+
+#. module: purchase_supplier_compare
+#: model:ir.model.fields,field_description:purchase_supplier_compare.field_purchase_order__cheapest_savings
+msgid "Cheapest Savings"
+msgstr ""
+
+#. module: purchase_supplier_compare
+#: model_terms:ir.ui.view,arch_db:purchase_supplier_compare.purchase_supplier_compare_view_form
+msgid "Choose"
+msgstr ""
+
+#. module: purchase_supplier_compare
+#: model_terms:ir.ui.view,arch_db:purchase_supplier_compare.purchase_supplier_compare_view_form
+msgid "Close"
+msgstr ""
+
+#. module: purchase_supplier_compare
+#: model:ir.model.fields,field_description:purchase_supplier_compare.field_purchase_extra_cost__company_currency_id
+msgid "Company Currency"
+msgstr ""
+
+#. module: purchase_supplier_compare
+#: model_terms:ir.ui.view,arch_db:purchase_supplier_compare.purchase_order_form_supplier_compare
+msgid "Compare"
+msgstr ""
+
+#. module: purchase_supplier_compare
+#: model_terms:ir.ui.view,arch_db:purchase_supplier_compare.purchase_order_form_supplier_compare
+msgid "Compare Suppliers"
+msgstr ""
+
+#. module: purchase_supplier_compare
+#. odoo-python
+#: code:addons/purchase_supplier_compare/models/purchase_order.py:0
+#: model_terms:ir.ui.view,arch_db:purchase_supplier_compare.purchase_supplier_compare_view_form
+msgid "Compare suppliers"
+msgstr ""
+
+#. module: purchase_supplier_compare
+#: model:ir.model,name:purchase_supplier_compare.model_res_partner
+msgid "Contact"
+msgstr ""
+
+#. module: purchase_supplier_compare
+#: model:ir.model.fields,field_description:purchase_supplier_compare.field_purchase_extra_cost__name
+msgid "Cost"
+msgstr ""
+
+#. module: purchase_supplier_compare
+#: model:ir.model.fields,field_description:purchase_supplier_compare.field_purchase_extra_cost__create_uid
+#: model:ir.model.fields,field_description:purchase_supplier_compare.field_purchase_supplier_compare__create_uid
+#: model:ir.model.fields,field_description:purchase_supplier_compare.field_purchase_supplier_compare_line__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: purchase_supplier_compare
+#: model:ir.model.fields,field_description:purchase_supplier_compare.field_purchase_extra_cost__create_date
+#: model:ir.model.fields,field_description:purchase_supplier_compare.field_purchase_supplier_compare__create_date
+#: model:ir.model.fields,field_description:purchase_supplier_compare.field_purchase_supplier_compare_line__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: purchase_supplier_compare
+#: model:ir.model.fields,field_description:purchase_supplier_compare.field_purchase_supplier_compare__currency_id
+#: model:ir.model.fields,field_description:purchase_supplier_compare.field_purchase_supplier_compare_line__currency_id
+msgid "Currency"
+msgstr ""
+
+#. module: purchase_supplier_compare
+#: model:ir.model.fields,field_description:purchase_supplier_compare.field_purchase_extra_cost__display_name
+#: model:ir.model.fields,field_description:purchase_supplier_compare.field_purchase_order__display_name
+#: model:ir.model.fields,field_description:purchase_supplier_compare.field_purchase_supplier_compare__display_name
+#: model:ir.model.fields,field_description:purchase_supplier_compare.field_purchase_supplier_compare_line__display_name
+#: model:ir.model.fields,field_description:purchase_supplier_compare.field_res_partner__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: purchase_supplier_compare
+#: model_terms:ir.ui.view,arch_db:purchase_supplier_compare.purchase_supplier_compare_view_form
+msgid ""
+"Each vendor's own prices for these quantities (quantity tiers included), plus its freight and\n"
+"                    other extra costs. Taxes excluded."
+msgstr ""
+
+#. module: purchase_supplier_compare
+#: model:ir.model.fields,field_description:purchase_supplier_compare.field_purchase_supplier_compare_line__extra_amount
+msgid "Extra Costs"
+msgstr ""
+
+#. module: purchase_supplier_compare
+#: model:ir.model.fields,field_description:purchase_supplier_compare.field_res_partner__purchase_extra_cost_ids
+#: model:ir.model.fields,field_description:purchase_supplier_compare.field_res_users__purchase_extra_cost_ids
+msgid "Extra Purchase Costs"
+msgstr ""
+
+#. module: purchase_supplier_compare
+#: model_terms:ir.ui.view,arch_db:purchase_supplier_compare.view_partner_form_extra_costs
+msgid "Extra costs per purchase"
+msgstr ""
+
+#. module: purchase_supplier_compare
+#: model:ir.model.fields,help:purchase_supplier_compare.field_purchase_extra_cost__amount
+msgid "Fixed amount in the company currency, or a percentage of the goods."
+msgstr ""
+
+#. module: purchase_supplier_compare
+#: model:ir.model.fields.selection,name:purchase_supplier_compare.selection__purchase_extra_cost__cost_type__fixed
+msgid "Fixed per order"
+msgstr ""
+
+#. module: purchase_supplier_compare
+#: model:ir.model.fields,field_description:purchase_supplier_compare.field_purchase_extra_cost__id
+#: model:ir.model.fields,field_description:purchase_supplier_compare.field_purchase_order__id
+#: model:ir.model.fields,field_description:purchase_supplier_compare.field_purchase_supplier_compare__id
+#: model:ir.model.fields,field_description:purchase_supplier_compare.field_purchase_supplier_compare_line__id
+#: model:ir.model.fields,field_description:purchase_supplier_compare.field_res_partner__id
+msgid "ID"
+msgstr ""
+
+#. module: purchase_supplier_compare
+#: model:ir.model.fields,field_description:purchase_supplier_compare.field_purchase_supplier_compare_line__is_cheapest
+msgid "Is Cheapest"
+msgstr ""
+
+#. module: purchase_supplier_compare
+#: model:ir.model.fields,field_description:purchase_supplier_compare.field_purchase_supplier_compare_line__is_current
+msgid "Is Current"
+msgstr ""
+
+#. module: purchase_supplier_compare
+#: model:ir.model.fields,field_description:purchase_supplier_compare.field_purchase_extra_cost__write_uid
+#: model:ir.model.fields,field_description:purchase_supplier_compare.field_purchase_supplier_compare__write_uid
+#: model:ir.model.fields,field_description:purchase_supplier_compare.field_purchase_supplier_compare_line__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: purchase_supplier_compare
+#: model:ir.model.fields,field_description:purchase_supplier_compare.field_purchase_extra_cost__write_date
+#: model:ir.model.fields,field_description:purchase_supplier_compare.field_purchase_supplier_compare__write_date
+#: model:ir.model.fields,field_description:purchase_supplier_compare.field_purchase_supplier_compare_line__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: purchase_supplier_compare
+#: model:ir.model.fields,field_description:purchase_supplier_compare.field_purchase_supplier_compare_line__missing_products
+msgid "No Price For"
+msgstr ""
+
+#. module: purchase_supplier_compare
+#: model:ir.model,name:purchase_supplier_compare.model_purchase_supplier_compare_line
+msgid "One supplier's offer for an RFQ"
+msgstr ""
+
+#. module: purchase_supplier_compare
+#. odoo-python
+#: code:addons/purchase_supplier_compare/models/purchase_order.py:0
+msgid "Only a request for quotation can change supplier."
+msgstr ""
+
+#. module: purchase_supplier_compare
+#: model:ir.model.fields,field_description:purchase_supplier_compare.field_purchase_supplier_compare__order_id
+msgid "Order"
+msgstr ""
+
+#. module: purchase_supplier_compare
+#: model:ir.model.fields,field_description:purchase_supplier_compare.field_purchase_supplier_compare_line__goods_amount
+msgid "Products"
+msgstr ""
+
+#. module: purchase_supplier_compare
+#: model:ir.model,name:purchase_supplier_compare.model_purchase_order
+msgid "Purchase Order"
+msgstr ""
+
+#. module: purchase_supplier_compare
+#: model:ir.model.fields,field_description:purchase_supplier_compare.field_purchase_extra_cost__sequence
+msgid "Sequence"
+msgstr ""
+
+#. module: purchase_supplier_compare
+#: model:ir.model,name:purchase_supplier_compare.model_purchase_supplier_compare
+msgid "Supplier price comparison for an RFQ"
+msgstr ""
+
+#. module: purchase_supplier_compare
+#: model:ir.model.fields,field_description:purchase_supplier_compare.field_purchase_supplier_compare__line_ids
+msgid "Suppliers"
+msgstr ""
+
+#. module: purchase_supplier_compare
+#: model:ir.model.fields,help:purchase_supplier_compare.field_purchase_extra_cost__waived_above
+msgid ""
+"The vendor drops this cost when the goods reach this amount (free freight). "
+"Leave empty if never."
+msgstr ""
+
+#. module: purchase_supplier_compare
+#: model:ir.model.fields,field_description:purchase_supplier_compare.field_purchase_supplier_compare_line__total_amount
+msgid "Total"
+msgstr ""
+
+#. module: purchase_supplier_compare
+#: model:ir.model.fields,field_description:purchase_supplier_compare.field_purchase_extra_cost__cost_type
+msgid "Type"
+msgstr ""
+
+#. module: purchase_supplier_compare
+#: model:ir.model.fields,field_description:purchase_supplier_compare.field_purchase_extra_cost__partner_id
+#: model:ir.model.fields,field_description:purchase_supplier_compare.field_purchase_supplier_compare_line__partner_id
+msgid "Vendor"
+msgstr ""
+
+#. module: purchase_supplier_compare
+#: model:ir.model,name:purchase_supplier_compare.model_purchase_extra_cost
+msgid "Vendor extra cost per purchase"
+msgstr ""
+
+#. module: purchase_supplier_compare
+#: model:ir.model.fields,field_description:purchase_supplier_compare.field_purchase_extra_cost__waived_above
+msgid "Waived Above"
+msgstr ""
+
+#. module: purchase_supplier_compare
+#: model:ir.model.fields,field_description:purchase_supplier_compare.field_purchase_supplier_compare_line__wizard_id
+msgid "Wizard"
+msgstr ""
+
+#. module: purchase_supplier_compare
+#: model:ir.model.fields,help:purchase_supplier_compare.field_purchase_extra_cost__name
+msgid "e.g. Freight to Arequipa, insurance, customs broker."
+msgstr ""

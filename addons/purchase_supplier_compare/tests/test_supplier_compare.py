@@ -157,3 +157,11 @@ class TestSupplierCompare(TransactionCase):
         order.button_confirm()
         with self.assertRaisesRegex(UserError, "request for quotation"):
             order._apply_supplier(self.lima)
+
+    def test_messages_are_in_spanish_for_a_peruvian_user(self):
+        # es_PE reads the module's es.po (Odoo falls back es_PE -> es / es_419).
+        self.env["res.lang"]._activate_lang("es_PE")
+        order = self._rfq(self.andes, (self.cement, 50))
+        order.button_confirm()
+        with self.assertRaisesRegex(UserError, "Solo una solicitud de cotización"):
+            order.with_context(lang="es_PE")._apply_supplier(self.lima)
