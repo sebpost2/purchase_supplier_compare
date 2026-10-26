@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="purchase_order_form_supplier_compare" model="ir.ui.view">
+        <field name="name">purchase.order.form.supplier.compare</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header/button[@name='button_cancel']" position="before">
+                <button name="action_compare_suppliers" type="object" string="Compare Suppliers"
+                        invisible="state not in ('draft', 'sent')"/>
+            </xpath>
+            <xpath expr="//sheet" position="before">
+                <div class="alert alert-info d-flex align-items-center gap-1" role="alert"
+                     invisible="not cheapest_partner_id">
+                    <field name="cheapest_partner_id" readonly="1" options="{'no_open': True}"/>
+                    <span invisible="not cheapest_savings">quotes every line for</span>
+                    <field name="cheapest_savings" invisible="not cheapest_savings" class="fw-bold"/>
+                    <span invisible="not cheapest_savings">less, extra costs included.</span>
+                    <span invisible="cheapest_savings">is the cheapest vendor for every line, extra costs included.</span>
+                    <button name="action_compare_suppliers" type="object" string="Compare" class="btn-link p-0"/>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>
