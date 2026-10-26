@@ -148,6 +148,16 @@ class TestSupplierCompare(TransactionCase):
         self.assertEqual(order.amount_untaxed, 1700.0)
         self.assertFalse(order.cheapest_partner_id)
 
+    def test_total_cost_shows_the_vendor_extra_costs_and_drops_with_the_cheaper_vendor(self):
+        order = self._rfq(self.andes, (self.cement, 50), (self.rebar, 20))
+        self.assertEqual(order.extra_cost_amount, 200.0)  # Andes freight, goods under 3000
+        self.assertEqual(order.total_cost, self._rows(order)[self.andes]["total"])
+        before = order.total_cost
+        order._apply_supplier(self.lima)
+        self.assertEqual(order.extra_cost_amount, 0.0)
+        self.assertEqual(order.total_cost, self._rows(order)[self.lima]["total"])
+        self.assertLess(order.total_cost, before)
+
     def test_vendor_without_every_price_cannot_be_applied(self):
         order = self._rfq(self.lima, (self.cement, 50), (self.rebar, 20))
         with self.assertRaisesRegex(UserError, "no price for"):

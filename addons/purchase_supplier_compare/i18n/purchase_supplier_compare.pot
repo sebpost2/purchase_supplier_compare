@@ -290,3 +290,23 @@ msgstr ""
 #: model:ir.model.fields,help:purchase_supplier_compare.field_purchase_extra_cost__name
 msgid "e.g. Freight to Arequipa, insurance, customs broker."
 msgstr ""
+
+#. module: purchase_supplier_compare
+#: model:ir.model.fields,field_description:purchase_supplier_compare.field_purchase_order__extra_cost_amount
+msgid "Vendor Extra Costs"
+msgstr ""
+
+#. module: purchase_supplier_compare
+#: model:ir.model.fields,help:purchase_supplier_compare.field_purchase_order__extra_cost_amount
+msgid "This vendor's freight and other extra costs for this order, as the comparison counts them."
+msgstr ""
+
+#. module: purchase_supplier_compare
+#: model:ir.model.fields,field_description:purchase_supplier_compare.field_purchase_order__total_cost
+msgid "Total Cost (untaxed)"
+msgstr ""
+
+#. module: purchase_supplier_compare
+#: model:ir.model.fields,help:purchase_supplier_compare.field_purchase_order__total_cost
+msgid "Untaxed amount plus the vendor's extra costs: the total the supplier comparison ranks by."
+msgstr ""

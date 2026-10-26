@@ -2,7 +2,7 @@
 
 [![tests](https://github.com/sebpost2/purchase_supplier_compare/actions/workflows/tests.yml/badge.svg)](https://github.com/sebpost2/purchase_supplier_compare/actions/workflows/tests.yml)
 
-**18 passing tests.** An Odoo 19 addon that answers the buyer's real question
+**19 passing tests.** An Odoo 19 addon that answers the buyer's real question
 on a request for quotation: which supplier is cheapest for *this* order, once
 volume prices, freight and other extra costs are counted. The lowest unit
 price often isn't the cheapest order.
@@ -26,6 +26,9 @@ price often isn't the cheapest order.
   (free freight).
 - **Banner on the RFQ** when another vendor quotes every line for less, with
   the saving, extra costs included.
+- **Total cost under the totals**: the vendor's extra costs and the untaxed
+  total plus those costs, so choosing the cheaper vendor visibly lowers the
+  cost even when the order total rises (the saving was in the freight).
 - **Compare Suppliers**: every vendor ranked by total. Vendors missing a
   price for some product are listed last, saying which product. **Choose**
   moves the RFQ to that vendor and reprices every line with its prices,

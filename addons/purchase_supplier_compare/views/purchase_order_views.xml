@@ -9,6 +9,14 @@
                 <button name="action_compare_suppliers" type="object" string="Compare Suppliers"
                         invisible="state not in ('draft', 'sent')"/>
             </xpath>
+            <!-- Full width, so the rows below line up as label / amount under the totals. -->
+            <xpath expr="//field[@name='tax_totals']" position="attributes">
+                <attribute name="colspan">2</attribute>
+            </xpath>
+            <xpath expr="//field[@name='tax_totals']" position="after">
+                <field name="extra_cost_amount" invisible="not extra_cost_amount"/>
+                <field name="total_cost" invisible="not extra_cost_amount" class="fw-bold"/>
+            </xpath>
             <xpath expr="//sheet" position="before">
                 <div class="alert alert-info d-flex align-items-center gap-1" role="alert"
                      invisible="not cheapest_partner_id">

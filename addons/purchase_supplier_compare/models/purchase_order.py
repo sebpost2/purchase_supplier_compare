@@ -10,6 +10,24 @@ class PurchaseOrder(models.Model):
         help="Another vendor that quotes every line of this RFQ for less, extra costs included.",
     )
     cheapest_savings = fields.Monetary(compute="_compute_cheapest_partner")
+    extra_cost_amount = fields.Monetary(
+        string="Vendor Extra Costs", compute="_compute_total_cost",
+        help="This vendor's freight and other extra costs for this order, as the comparison counts them.",
+    )
+    total_cost = fields.Monetary(
+        string="Total Cost (untaxed)", compute="_compute_total_cost",
+        help="Untaxed amount plus the vendor's extra costs: the total the supplier comparison ranks by.",
+    )
+
+    @api.depends("partner_id", "amount_untaxed", "currency_id", "date_order")
+    def _compute_total_cost(self):
+        # Shown under the totals so that choosing a cheaper vendor visibly lowers the cost: the
+        # order total alone can rise when the saving is in the freight.
+        for order in self:
+            order.extra_cost_amount = sum(
+                cost._amount_for(order, order.amount_untaxed) for cost in order.partner_id.purchase_extra_cost_ids
+            ) if order.currency_id else 0.0
+            order.total_cost = order.amount_untaxed + order.extra_cost_amount
 
     @api.depends(
         "state", "partner_id", "currency_id", "date_order",

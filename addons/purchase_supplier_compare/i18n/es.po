@@ -302,3 +302,23 @@ msgstr "Asistente"
 #: model:ir.model.fields,help:purchase_supplier_compare.field_purchase_extra_cost__name
 msgid "e.g. Freight to Arequipa, insurance, customs broker."
 msgstr "p. ej. flete a Arequipa, seguro, agente de aduanas."
+
+#. module: purchase_supplier_compare
+#: model:ir.model.fields,field_description:purchase_supplier_compare.field_purchase_order__extra_cost_amount
+msgid "Vendor Extra Costs"
+msgstr "Costos adicionales del proveedor"
+
+#. module: purchase_supplier_compare
+#: model:ir.model.fields,help:purchase_supplier_compare.field_purchase_order__extra_cost_amount
+msgid "This vendor's freight and other extra costs for this order, as the comparison counts them."
+msgstr "El flete y los demás costos adicionales de este proveedor para esta orden, tal como los cuenta la comparación."
+
+#. module: purchase_supplier_compare
+#: model:ir.model.fields,field_description:purchase_supplier_compare.field_purchase_order__total_cost
+msgid "Total Cost (untaxed)"
+msgstr "Costo total (sin impuestos)"
+
+#. module: purchase_supplier_compare
+#: model:ir.model.fields,help:purchase_supplier_compare.field_purchase_order__total_cost
+msgid "Untaxed amount plus the vendor's extra costs: the total the supplier comparison ranks by."
+msgstr "Base imponible más los costos adicionales del proveedor: el total con el que la comparación ordena a los proveedores."
