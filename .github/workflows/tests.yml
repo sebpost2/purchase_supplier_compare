@@ -28,7 +28,7 @@ jobs:
       - name: Install the module and run its tests
         run: |
           docker run --rm --network ${{ job.services.db.network }} \
-            -v "$PWD/addons:/mnt/extra-addons" odoo:19 \
+            -v "$PWD:/mnt/extra-addons" odoo:19 \
             odoo -d test -i purchase_supplier_compare --test-enable --test-tags /purchase_supplier_compare \
               --stop-after-init ${{ matrix.demo }} --db_host=db --db_user=odoo --db_password=odoo \
             2>&1 | tee odoo.log

@@ -2,6 +2,10 @@
 
 [![tests](https://github.com/sebpost2/purchase_supplier_compare/actions/workflows/tests.yml/badge.svg)](https://github.com/sebpost2/purchase_supplier_compare/actions/workflows/tests.yml)
 
+> **Branch `19.0`** is the Odoo Apps layout: the module sits at the
+> repository root, as the Apps store scans it. Development happens on
+> `master` (module under `addons/`); this branch follows it.
+
 **18 passing tests.** An Odoo 19 addon that answers the buyer's real question
 on a request for quotation: which supplier is cheapest for *this* order, once
 volume prices, freight and other extra costs are counted. The lowest unit
