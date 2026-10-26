@@ -19,6 +19,7 @@ prices in one click.
         "views/purchase_order_views.xml",
         "wizard/purchase_supplier_compare_views.xml",
     ],
+    "demo": ["data/demo.xml"],
     "installable": True,
     "application": False,
 }

@@ -57,19 +57,24 @@ insurance make Aceros Chachani S/ 586.05 cheaper for the whole order.
 
 ```bash
 docker compose up -d
-docker compose exec odoo odoo -d supplier_compare -i purchase_supplier_compare --without-demo=all --db_host=db --db_user=odoo --db_password=odoo --stop-after-init
+docker compose exec odoo odoo -d supplier_compare -i purchase_supplier_compare --with-demo --db_host=db --db_user=odoo --db_password=odoo --stop-after-init
 ```
 
-Open `http://localhost:8069`, add vendor prices on a product's Purchase tab
-and extra costs on the vendor's Sales & Purchase tab, then create an RFQ.
+Open `http://localhost:8069` (user `admin`, password `admin`), then Purchase,
+Requests for Quotation. `--with-demo` loads the screenshots' example: an RFQ
+to Distribuidora Andina whose banner points to Aceros Chachani, 586.05
+cheaper with extra costs. Drop the flag for an empty database and add your
+own vendor prices (product, Purchase tab) and extra costs (vendor, Sales &
+Purchase tab).
 
 ## Running the tests
 
 ```bash
-docker compose exec odoo odoo -d supplier_compare_test -i purchase_supplier_compare --test-enable --test-tags /purchase_supplier_compare --stop-after-init --without-demo=all --db_host=db --db_user=odoo --db_password=odoo
+docker compose exec odoo odoo -d supplier_compare_test -i purchase_supplier_compare --test-enable --test-tags /purchase_supplier_compare --stop-after-init --db_host=db --db_user=odoo --db_password=odoo
 ```
 
-CI runs them on every push against the stock `odoo:19` image.
+CI runs them on every push against the stock `odoo:19` image, once without
+and once with demo data.
 
 ## Scope
 

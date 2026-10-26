@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Fictitious vendors and prices, the README's example: Distribuidora Andina has the cheapest goods,
+         but its freight and insurance make Aceros Chachani the cheaper order. Loaded only with demo data. -->
+    <record id="demo_vendor_chachani" model="res.partner">
+        <field name="name">Aceros Chachani SAC</field>
+        <field name="is_company" eval="True"/>
+    </record>
+    <record id="demo_vendor_andina" model="res.partner">
+        <field name="name">Distribuidora Andina SAC</field>
+        <field name="is_company" eval="True"/>
+    </record>
+    <record id="demo_vendor_sur" model="res.partner">
+        <field name="name">Importadora Sur SAC</field>
+        <field name="is_company" eval="True"/>
+    </record>
+
+    <record id="demo_product_cement" model="product.product">
+        <field name="name">Cemento Portland tipo I (bolsa 42.5 kg)</field>
+        <field name="type">consu</field>
+    </record>
+    <record id="demo_product_rebar" model="product.product">
+        <field name="name">Fierro corrugado 1/2" x 9 m</field>
+        <field name="type">consu</field>
+    </record>
+    <record id="demo_product_wire" model="product.product">
+        <field name="name">Alambre negro N.º 16 (kg)</field>
+        <field name="type">consu</field>
+    </record>
+
+    <!-- Vendor prices; a second row with a minimum quantity is a volume tier. -->
+    <record id="demo_price_chachani_cement" model="product.supplierinfo">
+        <field name="partner_id" ref="demo_vendor_chachani"/>
+        <field name="product_id" ref="demo_product_cement"/>
+        <field name="price">31.5</field>
+    </record>
+    <record id="demo_price_chachani_cement_200" model="product.supplierinfo">
+        <field name="partner_id" ref="demo_vendor_chachani"/>
+        <field name="product_id" ref="demo_product_cement"/>
+        <field name="min_qty">200</field>
+        <field name="price">29.9</field>
+    </record>
+    <record id="demo_price_chachani_rebar" model="product.supplierinfo">
+        <field name="partner_id" ref="demo_vendor_chachani"/>
+        <field name="product_id" ref="demo_product_rebar"/>
+        <field name="price">42.0</field>
+    </record>
+    <record id="demo_price_chachani_wire" model="product.supplierinfo">
+        <field name="partner_id" ref="demo_vendor_chachani"/>
+        <field name="product_id" ref="demo_product_wire"/>
+        <field name="price">6.8</field>
+    </record>
+    <record id="demo_price_andina_cement" model="product.supplierinfo">
+        <field name="partner_id" ref="demo_vendor_andina"/>
+        <field name="product_id" ref="demo_product_cement"/>
+        <field name="price">30.2</field>
+    </record>
+    <record id="demo_price_andina_rebar" model="product.supplierinfo">
+        <field name="partner_id" ref="demo_vendor_andina"/>
+        <field name="product_id" ref="demo_product_rebar"/>
+        <field name="price">41.0</field>
+    </record>
+    <record id="demo_price_andina_rebar_100" model="product.supplierinfo">
+        <field name="partner_id" ref="demo_vendor_andina"/>
+        <field name="product_id" ref="demo_product_rebar"/>
+        <field name="min_qty">100</field>
+        <field name="price">39.5</field>
+    </record>
+    <record id="demo_price_andina_wire" model="product.supplierinfo">
+        <field name="partner_id" ref="demo_vendor_andina"/>
+        <field name="product_id" ref="demo_product_wire"/>
+        <field name="price">6.5</field>
+    </record>
+    <record id="demo_price_sur_cement" model="product.supplierinfo">
+        <field name="partner_id" ref="demo_vendor_sur"/>
+        <field name="product_id" ref="demo_product_cement"/>
+        <field name="price">28.0</field>
+    </record>
+
+    <record id="demo_cost_andina_freight" model="purchase.extra.cost">
+        <field name="partner_id" ref="demo_vendor_andina"/>
+        <field name="name">Flete Lima - Arequipa</field>
+        <field name="cost_type">fixed</field>
+        <field name="amount">850</field>
+        <field name="waived_above">20000</field>
+    </record>
+    <record id="demo_cost_andina_insurance" model="purchase.extra.cost">
+        <field name="partner_id" ref="demo_vendor_andina"/>
+        <field name="name">Seguro de carga</field>
+        <field name="cost_type">percent</field>
+        <field name="amount">1</field>
+    </record>
+    <record id="demo_cost_chachani_unloading" model="purchase.extra.cost">
+        <field name="partner_id" ref="demo_vendor_chachani"/>
+        <field name="name">Descarga en obra</field>
+        <field name="cost_type">fixed</field>
+        <field name="amount">120</field>
+    </record>
+
+    <!-- An RFQ to Andina at its own prices: the banner points to Chachani, 586.05 cheaper in total. -->
+    <record id="demo_rfq" model="purchase.order">
+        <field name="partner_id" ref="demo_vendor_andina"/>
+        <field name="order_line" eval="[
+            Command.create({'product_id': ref('demo_product_cement'), 'product_qty': 200, 'price_unit': 30.2}),
+            Command.create({'product_id': ref('demo_product_rebar'), 'product_qty': 120, 'price_unit': 39.5}),
+            Command.create({'product_id': ref('demo_product_wire'), 'product_qty': 50, 'price_unit': 6.5}),
+        ]"/>
+    </record>
+</odoo>

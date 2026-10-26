@@ -88,7 +88,8 @@ class TestSupplierCompare(TransactionCase):
     def test_price_in_a_foreign_currency_is_converted_to_the_order_currency(self):
         eur = self.env.ref("base.EUR")
         eur.active = True
-        self.env["res.currency.rate"].create({"currency_id": eur.id, "rate": 0.5, "name": "2000-01-01", "company_id": self.company.id})
+        # Dated today so it is the rate in force even when the database already has EUR rates (demo data).
+        self.env["res.currency.rate"].create({"currency_id": eur.id, "rate": 0.5, "name": date.today(), "company_id": self.company.id})
         self._price(self.lima, self.rebar, 4.0, min_qty=20, currency_id=eur.id)  # 4 EUR = 8 in company currency
         order = self._rfq(self.lima, (self.rebar, 20))
         self.assertEqual(order.currency_id, self.company.currency_id)
