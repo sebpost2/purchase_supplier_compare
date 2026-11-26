@@ -43,7 +43,8 @@ class PurchaseOrder(models.Model):
             if not complete:
                 continue
             best = complete[0]
-            current = next((row for row in complete if row["partner"] == order.partner_id), None)
+            current_vendors = order._rfq_vendors()
+            current = next((row for row in complete if row["partner"] in current_vendors), None)
             if current is None:
                 order.cheapest_partner_id = best["partner"]
             elif order.currency_id.compare_amounts(best["total"], current["total"]) < 0:
@@ -117,7 +118,7 @@ class PurchaseOrder(models.Model):
                     "extra_amount": row["extra"],
                     "total_amount": row["total"],
                     "missing_products": ", ".join(row["missing"].mapped("display_name")),
-                    "is_current": row["partner"] == self.partner_id,
+                    "is_current": row["partner"] in current_vendors,
                     "is_cheapest": index == 0 and not row["missing"],
                 })
                 for index, row in enumerate(self._supplier_comparison())

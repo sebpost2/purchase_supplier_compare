@@ -1,6 +1,6 @@
 {
     "name": "Supplier Price Comparison",
-    "version": "19.0.1.1.0",
+    "version": "19.0.1.1.1",
     "summary": "Compare suppliers on an RFQ by total cost: volume-tiered prices plus each vendor's freight and other extra costs.",
     "description": """
 Prices every line of an RFQ with each vendor's own price list (Odoo's vendor
