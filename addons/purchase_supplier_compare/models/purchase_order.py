@@ -54,6 +54,11 @@ class PurchaseOrder(models.Model):
     def _product_lines(self):
         return self.order_line.filtered(lambda line: line.product_id and not line.display_type)
 
+    def _rfq_vendors(self):
+        """The vendors whose prices this RFQ uses: its partner and, when it is addressed to a contact, the
+        company above it. Same rule as Odoo's `_select_seller`, which prices a contact with its parent's rows."""
+        return self.partner_id | self.partner_id.parent_id
+
     def _vendor_price(self, line, vendor):
         """(vendor price row, undiscounted unit price in the line's unit and the order's currency) for `vendor`
         on `line`, picked by Odoo's own rule: the vendor's best price whose minimum quantity the line reaches."""
@@ -85,6 +90,9 @@ class PurchaseOrder(models.Model):
                     missing |= line.product_id
                     continue
                 goods += price_unit * (1 - seller.discount / 100) * line.product_qty
+            if missing == lines.product_id:
+                # No valid price for any line (e.g. all of them expired): nothing to compare.
+                continue
             extra = sum(cost._amount_for(self, goods) for cost in vendor.purchase_extra_cost_ids)
             rows.append({"partner": vendor, "goods": goods, "extra": extra, "total": goods + extra, "missing": missing})
         return sorted(rows, key=lambda row: (bool(row["missing"]), row["total"]))
@@ -109,6 +117,7 @@ class PurchaseOrder(models.Model):
 
     def action_compare_suppliers(self):
         self.ensure_one()
+        current_vendors = self._rfq_vendors()
         wizard = self.env["purchase.supplier.compare"].create({
             "order_id": self.id,
             "line_ids": [

@@ -104,6 +104,11 @@ class TestSupplierCompare(TransactionCase):
         self._price(self.lima, self.rebar, 1.0, date_end=date.today() - timedelta(days=1))
         self.assertEqual(self._rows(self._rfq(self.lima, (self.rebar, 20)))[self.lima]["goods"], 200.0)
 
+    def test_vendor_with_no_valid_price_for_any_line_is_left_out(self):
+        norte = self.env["res.partner"].create({"name": "Norte Trading"})
+        self._price(norte, self.rebar, 1.0, date_end=date.today() - timedelta(days=1))
+        self.assertNotIn(norte, self._rows(self._rfq(self.lima, (self.rebar, 20))))
+
     def test_negative_extra_cost_is_rejected(self):
         with mute_logger("odoo.sql_db"), self.assertRaises(IntegrityError):
             self.env["purchase.extra.cost"].create({"partner_id": self.lima.id, "name": "Bad", "amount": -1.0})
@@ -137,6 +142,14 @@ class TestSupplierCompare(TransactionCase):
         self.assertEqual(wizard.line_ids.filtered("is_cheapest").partner_id, self.lima)
         self.assertEqual(wizard.line_ids.filtered("is_current").partner_id, self.andes)
         self.assertEqual(wizard.line_ids.filtered(lambda line: line.partner_id == self.sur).missing_products, "Rebar 1/2in")
+
+    def test_rfq_to_a_contact_of_the_vendor_counts_as_that_vendor(self):
+        # Odoo prices a contact with its parent company's vendor prices, so that company is the current vendor.
+        contact = self.env["res.partner"].create({"name": "Lima Steel, Sales", "parent_id": self.lima.id})
+        order = self._rfq(contact, (self.cement, 50), (self.rebar, 20))
+        self.assertFalse(order.cheapest_partner_id)
+        wizard = self.env["purchase.supplier.compare"].browse(order.action_compare_suppliers()["res_id"])
+        self.assertEqual(wizard.line_ids.filtered("is_current").partner_id, self.lima)
 
     def test_choosing_a_vendor_moves_the_rfq_and_reprices_typed_prices(self):
         order = self._rfq(self.andes, (self.cement, 50), (self.rebar, 20))
